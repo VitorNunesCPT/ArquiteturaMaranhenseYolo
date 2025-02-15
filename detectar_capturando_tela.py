@@ -18,7 +18,7 @@ def main():
     offset_y = 30
     wincap = WindowCapture(size=(1366, 780), origin=(offset_x, offset_y))
 
-    model = YOLO("runs/detect/train/weights/best.pt")
+    model = YOLO("runs/detect/train3/weights/best.pt")
 
     track_history = defaultdict(lambda: [])
     seguir = True
