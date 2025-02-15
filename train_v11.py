@@ -6,7 +6,7 @@ from ultralytics import YOLO
 def main():
     # Load a model
     #model = YOLO("yolov8n.yaml")  # build a new model from scratch
-    model = YOLO("yolo11m.pt")  # load a pretrained model (recommended for training)
+    model = YOLO("yolo11l.pt")  # load a pretrained model (recommended for training)
 
     # Use the model
     model.train(data="arquitetura.yaml", epochs=30, device=0)  # train the model
