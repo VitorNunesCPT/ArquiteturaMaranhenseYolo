@@ -9,10 +9,10 @@
 # "c:\users\bobgreen\documents\pythonscripts\python_envs\yolov5env\scripts\python.exe"  "C:\Users\BobGreen\Documents\PythonScripts\python_envs\yolov5env\Scripts\tensorboard.exe" --logdir runs\train_among
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-path: ./ # dataset root dir
-train: images/train # train images (relative to 'path') 128 images
-val: images/train # val images (relative to 'path') 128 images
-test: # test images (optional)
+path: C:/Users/vitor/arquivosLocais/ArquiteturaMaranhenseYolo/ArquiteturaMaranhenseYolo/datasets/detect  # caminho absoluto
+train: images/train
+val: images/train
+test:  # opcional
 
 # Classes
 names:
