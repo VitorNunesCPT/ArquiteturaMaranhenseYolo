@@ -84,31 +84,77 @@ class Inference:
             }
         )
         
-        # Esconder elementos da interface que podem causar warnings
-        hide_elements = """
+        # Estilo personalizado usando uma paleta tecnológica
+        custom_css = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             .stDeployButton {display:none;}
+            
+            /* Estilo geral da página */
+            .stApp {
+                background-color: #1e1e1e; /* Fundo preto */
+            }
+            
+            /* Estilo do sidebar */
+            .css-1d391kg {
+                background-color: #2c2c2c; /* Cinza escuro */
+            }
+            
+            /* Estilo dos widgets */
+            .stSlider, .stSelectbox, .stMultiSelect {
+                background-color: #3a3a3a; /* Cinza médio */
+                color: #ffffff; /* Texto branco */
+            }
+            
+            /* Estilo dos botões */
+            .stButton>button {
+                background-color: #007acc; /* Azul tecnológico */
+                color: #ffffff; /* Texto branco */
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+            }
+            
+            .stButton>button:hover {
+                background-color: #005f99; /* Azul mais escuro no hover */
+            }
+            
+            /* Estilo dos containers */
+            .css-1r6slb0 {
+                background-color: #3a3a3a; /* Cinza médio */
+                border-radius: 10px;
+                padding: 1rem;
+                margin: 0.5rem 0;
+            }
             </style>
         """
-        self.st.markdown(hide_elements, unsafe_allow_html=True)
+        self.st.markdown(custom_css, unsafe_allow_html=True)
 
-        # Título personalizado
-        main_title_cfg = """<div><h1 style="color:#FF64DA; text-align:center; font-size:40px;
-        font-family: 'Archivo', sans-serif; margin-bottom:20px;">Detector de Arquitetura Maranhense</h1></div>"""
-
-        # Subtítulo personalizado
-        sub_title_cfg = """<div><h4 style="color:#042AFF; text-align:center; font-family: 'Archivo', sans-serif; 
-        margin-bottom:50px;">Detecção de elementos arquitetônicos maranhenses em tempo real</h4></div>"""
+        # Título personalizado com nova estilização
+        main_title_cfg = """
+            <div style="background-color: #007acc; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+                <h1 style="color: #ffffff; text-align:center; font-size:40px;
+                font-family: 'Archivo', sans-serif; margin-bottom:20px;">
+                    Detector de Arquitetura Maranhense
+                </h1>
+                <h4 style="color: #d0d0d0; text-align:center; font-family: 'Archivo', sans-serif;
+                margin-bottom:0;">
+                    Detecção de elementos arquitetônicos maranhenses em tempo real
+                </h4>
+            </div>
+        """
         
         self.st.markdown(main_title_cfg, unsafe_allow_html=True)
-        self.st.markdown(sub_title_cfg, unsafe_allow_html=True)
 
     def sidebar(self):
         """Configura a barra lateral do Streamlit."""
         with self.st.sidebar:
-            self.st.title("Configurações")
+            self.st.markdown("""
+                <div style="background-color: #007acc; padding: 1rem; border-radius: 5px; margin-bottom: 2rem;">
+                    <h2 style="color: #ffffff; text-align: center;">Configurações</h2>
+                </div>
+            """, unsafe_allow_html=True)
             
             # Seção de seleção da fonte de vídeo
             self.source = self.st.selectbox(
@@ -127,13 +173,21 @@ class Inference:
                 self.st.slider("Limiar IoU", 0.0, 1.0, self.iou, 0.01)
             )
 
-        # Criar colunas para os frames
+        # Estilização das colunas de vídeo
         col1, col2 = self.st.columns(2)
         with col1:
-            self.st.markdown("### Vídeo Original")
+            self.st.markdown("""
+                <div style="background-color: #007acc; padding: 0.5rem; border-radius: 5px; margin-bottom: 1rem;">
+                    <h3 style="color: #ffffff; text-align: center;">Vídeo Original</h3>
+                </div>
+            """, unsafe_allow_html=True)
             self.org_frame = self.st.empty()
         with col2:
-            self.st.markdown("### Detecções")
+            self.st.markdown("""
+                <div style="background-color: #007acc; padding: 0.5rem; border-radius: 5px; margin-bottom: 1rem;">
+                    <h3 style="color: #ffffff; text-align: center;">Detecções</h3>
+                </div>
+            """, unsafe_allow_html=True)
             self.ann_frame = self.st.empty()
 
     def source_upload(self):
