@@ -1,0 +1,12 @@
+# Dependências principais
+streamlit==1.32.0
+opencv-python==4.9.0.80
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# Dependências para captura de tela
+pywin32==306; platform_system == "Windows"
+mss>=9.0.1
+
+# Versões específicas para garantir compatibilidade
+python-dotenv>=1.0.0 
